@@ -1,103 +1,262 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Support — AMPL</title>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<title>Assistance AMPL</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap');
+
   :root {
-    color-scheme: light dark;
-    --bg: #FAFAF8;
-    --surface: #FFFFFF;
-    --text: #1A1A18;
-    --text-secondary: #6B6963;
-    --primary: #D85A30;
-    --accent: #EF9F27;
-    --outline: #D8D6CF;
+    --bg: #faf6f0;
+    --surface: #ffffff;
+    --surface-line: #eee6d8;
+    --text-primary: #1c1815;
+    --text-secondary: #5c5346;
+    --text-muted: #948a78;
+    --border: #e6dcc8;
+    --accent: #b84a26;
+    --accent-soft: #f0997b;
+    --amber: #a86612;
+    --amber-soft: #f4d99a;
   }
+
   @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
       --bg: #141414;
-      --surface: #1E1E1E;
-      --text: #FFFFFF;
-      --text-secondary: #B4B2A9;
-      --outline: #444441;
+      --surface: #1e1e1e;
+      --surface-line: #2a2a2a;
+      --text-primary: #ffffff;
+      --text-secondary: #b4b2a9;
+      --text-muted: #7a776c;
+      --border: #3a3833;
+      --accent: #d85a30;
+      --accent-soft: #f0997b;
+      --amber: #ef9f27;
+      --amber-soft: #4a1b0c;
     }
   }
+
+  :root[data-theme="dark"] {
+    --bg: #141414;
+    --surface: #1e1e1e;
+    --surface-line: #2a2a2a;
+    --text-primary: #ffffff;
+    --text-secondary: #b4b2a9;
+    --text-muted: #7a776c;
+    --border: #3a3833;
+    --accent: #d85a30;
+    --accent-soft: #f0997b;
+    --amber: #ef9f27;
+    --amber-soft: #4a1b0c;
+  }
+
   * { box-sizing: border-box; }
+
   body {
-    margin: 0;
     background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
+    color: var(--text-primary);
+    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
   }
-  main {
-    max-width: 640px;
+
+  .wrap {
+    max-width: 700px;
     margin: 0 auto;
-    padding: 48px 20px 80px;
+    padding: 56px 24px 96px;
   }
-  .badge {
+
+  header.doc-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mark {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .mark::after {
+    content: '';
     display: inline-block;
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    margin-bottom: 20px;
+    width: 8px;
+    height: 8px;
+    background: var(--amber);
+    margin-left: 8px;
+    transform: skewX(-12deg);
+    vertical-align: middle;
   }
+
+  header.doc-head .divider { color: var(--text-muted); }
+
+  header.doc-head .doc-name {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+  }
+
   h1 {
-    font-size: 1.9rem;
-    margin: 0 0 4px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(34px, 6vw, 46px);
+    letter-spacing: 0.01em;
+    line-height: 1.05;
+    margin: 0 0 12px;
+    text-wrap: balance;
   }
-  .subtitle {
+
+  .lede {
+    font-size: 18px;
     color: var(--text-secondary);
-    margin: 0 0 36px;
+    max-width: 58ch;
+    margin: 0 0 44px;
   }
-  section {
+
+  .contact-card {
     background: var(--surface);
-    border: 1px solid var(--outline);
-    border-radius: 14px;
-    padding: 22px 24px;
-    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 24px 26px;
+    margin-bottom: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
   }
+
+  .contact-card .label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .contact-card a.email {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+  .contact-card a.email:hover { color: var(--accent); }
+
+  .contact-card .reply-note {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  section { margin-top: 40px; }
+
   h2 {
-    font-size: 1.05rem;
-    margin: 0 0 10px;
-    color: var(--primary);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.01em;
+    color: var(--text-primary);
+    margin: 0 0 16px;
   }
-  p { margin: 0 0 10px; }
-  p:last-child { margin-bottom: 0; }
-  a { color: var(--primary); text-decoration: none; font-weight: 600; }
-  a:hover { text-decoration: underline; }
-  .meta {
-    margin-top: 40px;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    text-align: center;
+
+  .faq-item {
+    padding: 16px 0;
+    border-top: 1px solid var(--border);
+  }
+  .faq-item:last-child { border-bottom: 1px solid var(--border); }
+
+  .faq-item h3 {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0 0 6px;
+    color: var(--text-primary);
+  }
+
+  .faq-item p { margin: 0; color: var(--text-secondary); max-width: 62ch; }
+  .faq-item code {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.92em;
+    background: var(--surface-line);
+    padding: 1px 6px;
+    border-radius: 4px;
+    color: var(--text-primary);
+  }
+
+  a { color: var(--accent); }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  footer a { color: var(--text-muted); text-decoration-color: var(--border); }
+
+  @media (max-width: 520px) {
+    .wrap { padding: 40px 18px 72px; }
+    .contact-card { flex-direction: column; align-items: flex-start; }
   }
 </style>
-</head>
-<body>
-<main>
-  <span class="badge"></span>
-  <h1>Support — AMPL</h1>
-  <p class="subtitle">Application compagnon du championnat de karting AMPL.</p>
 
-  <section>
-    <h2>Besoin d'aide ?</h2>
-    <p>Pour toute question, bug ou suggestion concernant l'application AMPL, contacte-nous directement :</p>
-    <p><a href="mailto:gregory.sevrin@gmail.com">gregory.sevrin@gmail.com</a></p>
-  </section>
+<div class="wrap">
+  <header class="doc-head">
+    <span class="mark">AMPL</span>
+    <span class="divider">/</span>
+    <span class="doc-name">Assistance</span>
+  </header>
+
+  <h1>Besoin d'aide ?</h1>
+  <p class="lede">Une question sur l'application AMPL, un bug rencontré, une suggestion ? Écris-nous directement, on répond personnellement.</p>
+
+  <div class="contact-card">
+    <div>
+      <div class="label">Contact</div>
+      <a class="email" href="mailto:soum.mx.bastogne@gmail.com">soum.mx.bastogne@gmail.com</a>
+    </div>
+    <span class="reply-note">Réponse sous quelques jours</span>
+  </div>
 
   <section>
     <h2>Questions fréquentes</h2>
-    <p><strong>L'application est-elle gratuite ?</strong><br>
-    Oui, l'application est entièrement gratuite. Un don optionnel dans les Réglages permet de soutenir son développement et son hébergement.</p>
-    <p><strong>Comment mes favoris et notifications fonctionnent-ils ?</strong><br>
-    Ajoute un pilote en favori pour recevoir une notification lorsque ses résultats sont disponibles.</p>
+
+    <div class="faq-item">
+      <h3>Je ne reçois pas les notifications de mes pilotes favoris</h3>
+      <p>Vérifie que les notifications sont activées dans <code>Réglages → Notifications pour mes favoris</code> dans l'app, puis dans les réglages iOS de l'appareil (<code>Réglages iOS → AMPL → Notifications</code>).</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Les résultats affichés ne correspondent pas à ceux de Speedhive</h3>
+      <p>Le classement général provient des résultats officiels publiés par l'AMPL ; l'essai et les manches sont synchronisés automatiquement depuis Speedhive dans l'heure qui suit leur publication. En cas d'écart persistant, écris-nous en précisant la course concernée.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Comment devenir organisateur (accès admin) ?</h3>
+      <p>L'accès administrateur est réservé aux membres du comité AMPL chargés de la saisie des résultats. Contacte l'association directement pour en faire la demande.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>À quoi servent les dons ?</h3>
+      <p>Les dons volontaires (depuis <code>Réglages → Faire un don</code>, via achat intégré App Store sur iOS ou Google Pay sur Android) aident à couvrir les frais d'hébergement et le développement continu de l'application.</p>
+    </div>
   </section>
 
-  <p class="meta">AMPL — Développée par Soum MX</p>
-</main>
-</body>
-</html>
+  <footer>
+    Application développée par Soum MX pour l'Association Motocycliste de la Province de Luxembourg (AMPL). Voir aussi la <a href="privacy.html">politique de confidentialité</a>.
+  </footer>
+</div>
+
+</body></html>
